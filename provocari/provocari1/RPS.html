@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        p {
+            text-align: center;
+
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <script>
+        // 0 = piatra
+        // 1 = hartie
+        // 2 = foarfeca
+        var pick = prompt('piatra/hartie/foarfeca')
+        var optiuni = ['piatra', ' hartie', 'foarfeca']
+        var ai = optiuni[Math.floor(Math.random() * 3)]
+
+        if (pick !== "piatra" && pick !== "hartie" && pick !== "foarfeca") {
+            alert('incorect')
+        }
+        else {
+            document.write(`<br><br><br><br><p>ai ales: ${pick} si AI a ales: ${ai} </p>`)
+        }
+        if (pick == 'piatra' && ai == 'piatra') {
+            document.write("<br><br><p>-----  REMIZA  -----</p>")
+        }
+        else if (pick == 'piatra' && ai == 'hartie') {
+            document.write("<br><br><p>-----  AI PIERDUT... F  -----</p>")
+        }
+        else if (pick == 'piatra' && ai == 'foarfeca') {
+            document.write("<br><br><p>-----  AI CASTIGAT!!! IZI  -----</p>")
+        }
+        else if (pick == 'hartie' && ai == 'piatra') {
+            document.write("<br><br><p>-----  AI CASTIGAT!!! IZI  -----</p>")
+        }
+        else if (pick == 'hartie' && ai == 'hartie') {
+            document.write("<br><br><p>-----  REMIZA  -----</p>")
+        }
+        else if (pick == 'hartie' && ai == 'foarfeca') {
+            document.write("<br><br><p>-----  AI PIERDUT... F  -----</p>")
+        }
+        else if (pick == 'foarfeca' && ai == 'piatra') {
+            document.write("<br><br><p>-----  AI PIERDUT... F  -----</p>")
+        }
+        else if (pick == 'foarfeca' && ai == 'hartie') {
+            document.write("<br><br><p>-----  AI CASTIGAT!!! IZI   -----</p>")
+        }
+        else if (pick == 'foarfeca' && ai == 'foarfeca') {
+            document.write("<br><br><p>-----  REMIZA  -----</p>")
+        }
+
+    </script>
+</body>
+
+</html>

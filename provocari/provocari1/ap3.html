@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>3. Sa se afiseza numerele impare pana la 100 si sa se calculeze suma lor.</p>
+    <script>
+        var sum = 0;
+        for(i = 1 ; i<=100 ; i++){
+            if(i % 2 !== 0){
+                document.write(` ${i}`);
+                sum = sum + i;
+            }
+        }
+        document.write(`<br><br> <p> suma numerelor impare de la 1 la 100 
+                este: ${sum}</p>`)
+    </script>
+</body>
+</html>

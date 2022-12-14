@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>2. Calculati media aritmetica a trei numere introduse de la tastatura</p>
+    <script>
+        var a = prompt('introdu numarul a:')
+        var b = prompt('introdu numarul b:')
+        var c = prompt('introdu numarul c:')
+        a = Number(a)
+        b = Number(b)
+        c = Number(c)
+        if(isNaN(a) || isNaN(b)){
+            alert('nu este numar')
+        }
+        else{
+            document.write(`<br><br> media aritmetica a numerelor ${a} , ${b} ,
+            ${c} este: `, (a + b +c) / 3)
+        }
+        
+    </script>
+</body>
+</html>

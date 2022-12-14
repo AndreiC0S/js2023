@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>1. Faceti un calculator, care primeste de la tastatura 2 valori si 
+        calculeaza : suma +, diferenta -,
+		produsul *, impartirea / , modulo %, puterea a**b si b**a
+		afisati rezultatele in pagina.</p>
+    <script>
+        var a = prompt('introdu numarul a: ')
+        var b = prompt('introdu numarul b: ')
+        a = Number(a)
+        b = Number(b)
+        if(isNaN(a) || isNaN(b)){
+            alert('nu este numar')
+        }
+        else{
+            document.write(`suma numerelor ${a} si ${b} este : `, (a + b),'<br>')
+            document.write(`<br>diferenta numerelor ${a} si ${b} este : `, (a - b),'<br>')
+            document.write(`<br>produsul numerelor ${a} si ${b} este : `, (a * b),'<br>')
+            document.write(`<br>impartirea numerelor ${a} si ${b} este : `, (a / b),'<br>')
+            document.write(`<br>restul(modulo) numerelor ${a} si ${b} este : `, (a % b),'<br>')
+            document.write(`<br>puterea numerelor ${a} si ${b} este : `, (a ** b),'<br>')
+            document.write(`<br>puterea numerelor ${b} si ${a} este : `, (b ** a),'<br>')
+        }
+        
+    </script>
+</body>
+</html>

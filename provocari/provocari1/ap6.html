@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>6. Programul ce afisează un calificativ în funcție de nota unui <br>
+		student. Nota va fi setată în variabila $nota. 1-4 isuficient; 5-6<br>
+		suficient; 7 - 8 bun; 9-10 bursier;</p>
+    <script>
+        var nota = prompt('introdu nota: ')
+        
+        if(isNaN(nota) || nota > 10 ){
+            alert('introdu un numar de la 1 la 10')
+        }
+        else{
+            switch(true)
+            {
+                case (nota < 5): document.write(`<p>nota este ${nota}, calificativ: Insuficient</p>`);break
+                case ((nota >= 5) && (nota < 7)): document.write(`<p>nota este ${nota}, calificativ: Suficient</p>`);break
+                case ((nota >=7) && (nota <9)): document.write(`<p>nota este ${nota}, calificativ: Bun</p>`);break
+                case ((nota >= 9)): document.write(`<p>nota este ${nota}, calificativ: Bursant</p>`);break
+            }
+        }
+        
+    </script>
+</body>
+</html>
