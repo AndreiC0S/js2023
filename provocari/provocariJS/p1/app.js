@@ -9,7 +9,7 @@ const rating = document.getElementById('rating');
 
 function createElement(element) {
 
-    // creare elemente html, apelate prin const 
+    // creare elemente html, apelate prin const x
 
     const el = document.createElement('div');
     const title = document.createElement('h1');
@@ -30,15 +30,6 @@ function createElement(element) {
     duration.setAttribute("class","duration");
 
     //---------------------------------------------------------------
-
-    // 
-
-    // title.innerHTML = element.title;
-    // tags.innerHTML = 'tags: ' + element.tags.join(', ');
-    // hosts.innerHTML = 'hosts: ' + (element.hosts.length > 1 ? element.hosts.join(', ') : element.hosts[0]);
-    // genre.innerHTML = 'genre: ' + element.genre;
-    // rating.innerHTML = 'rating: ' + element.rating;
-    // duration.innerHTML = 'duration(min): ' + element.duration;
 
 
     title.innerHTML = element.title;
@@ -71,13 +62,6 @@ function showPodcast(results) {
         }
     });
 }
-
-// showPodcast(data, "")
-// function showPodcast(results) {
-//     results.forEach(element => {
-//             createElement(element);
-//     });
-// }
 
 function getFreePodcasts(results) {
     results.forEach(element => {
