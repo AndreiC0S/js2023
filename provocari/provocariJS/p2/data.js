@@ -1,6 +1,5 @@
 const data = [
     {
-        id: 1,
         title: "Scrimba Podcast", 
         duration: 50, 
         tags: ["education", "jobs", "technology"], 
@@ -10,20 +9,18 @@ const data = [
         paid: false
     },
     {
-        id: 2,
         title: "Crime Fan", 
         duration: 150, 
         tags: ["crime", "entertainment", "mature"], 
         hosts: ["Bob Smith", "Camilla Lambert"], 
         genre: "true crime",
-        rating: 5, 
+        rating: 7, 
         paid: true
     },
     {
-        id: 3,
         title: "Mythical Creatures", 
         duration: 99, 
-        tags: ["entertainment", "general", "unicorns"], 
+        tags: ["entertainment", "general", "unicorns", "cats"], 
         hosts: ["Esmerelda Shelley", "Duke Dukington", "Felix the Cat"], 
         genre: "fantasy",
         rating: 8,
@@ -44,7 +41,7 @@ const data = [
         tags: ["fantasy", "entertainment"], 
         hosts: ["Frewin Wyrm", "Evanora Highmore"], 
         genre: "fantasy",
-        rating: 8,
+        rating: 5,
         paid: false
     },
     {
@@ -54,6 +51,42 @@ const data = [
         hosts: ["Treasure Porth", "Guil Hernandez", "Tom Chant"], 
         genre: "education",
         rating: 9,
+        paid: false
+    },
+    {
+        title: "rating 4", 
+        duration: 50, 
+        tags: ["education", "jobs", "technology"], 
+        hosts: ["Alex Booker"], 
+        rating: 4,
+        genre: "education",
+        paid: false
+    },
+    {
+        title: "rating 2", 
+        duration: 50, 
+        tags: ["education", "jobs", "technology"], 
+        hosts: ["Alex Booker"], 
+        rating: 2,
+        genre: "education",
+        paid: false
+    },
+    {
+        title: "rating 3", 
+        duration: 50, 
+        tags: ["education", "jobs", "technology"], 
+        hosts: ["Alex Booker"], 
+        rating: 3,
+        genre: "education",
+        paid: false
+    },
+    {
+        title: "rating 1", 
+        duration: 50, 
+        tags: ["education", "jobs", "technology"], 
+        hosts: ["Alex Booker"], 
+        rating: 1,
+        genre: "education",
         paid: false
     },
 ]

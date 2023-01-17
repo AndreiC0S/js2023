@@ -25,7 +25,7 @@ function showMovies(results, searchTerm=''){
         image.src = IMGPATH + element.poster_path;
         ln.innerHTML = `${element.original_language}`;
         el.appendChild(image);
-        el.appendChild(text);
+
         el.appendChild(ln);
         main.appendChild(el);
     }); 
