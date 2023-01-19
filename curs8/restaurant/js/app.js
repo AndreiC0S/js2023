@@ -10,8 +10,8 @@ window.addEventListener("DOMContentLoaded", function () {
 });
 
 function displayMenuItems(menuItems) {
-    let displayMenu = menuItems.map(function (item){
-        return`<article class="menu-item">
+  let displayMenu = menuItems.map(function (item) {
+    return `<article class="menu-item">
             <img src="${item.img}" alt=${item.title} class="photo" />
             <div class="item-info">
                 <header>
@@ -23,11 +23,10 @@ function displayMenuItems(menuItems) {
                 </p>
             </div>
             </article>`;
-    })
-    displayMenu = displayMenu.join("");
-    sectionCenter.innerHTML = displayMenu;
+  });
+  displayMenu = displayMenu.join("");
+  sectionCenter.innerHTML = displayMenu;
 }
-
 
 function displayMenuButtons() {
   const categories = menu.reduce(
@@ -74,4 +73,3 @@ function displayMenuButtons() {
     });
   });
 }
-
