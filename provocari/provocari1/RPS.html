@@ -9,8 +9,6 @@
     <style>
         p {
             text-align: center;
-
-
         }
     </style>
 </head>
@@ -21,13 +19,14 @@
         
         var pick = prompt('piatra/hartie/foarfeca')
         var optiuni = ['piatra', 'hartie', 'foarfeca']
-        var ai = optiuni[Math.floor(Math.random() * 3)]
+        var ai = optiuni[Math.floor(Math.random() * optiuni.length)]
 
         if (pick !== "piatra" && pick !== "hartie" && pick !== "foarfeca") {
             alert('incorect')
         }
         else {
             document.write(`<br><br><br><br><p>ai ales: ${pick} si AI a ales: ${ai} </p>`)
+            
         }
         if (pick == 'piatra' && ai == 'piatra') {
             document.write("<br><br><p>-----  REMIZA  -----</p>")
