@@ -8,10 +8,10 @@
 
 let nume = document.getElementById('nume');
 let prenume = document.getElementById('prenume');
-let arr = [nume, prenume]
-let para1 = document.getElementById('p1')
-let para2 = document.getElementById('p2')
-let form = document.getElementById('myForm')
+let arr = [nume, prenume];
+let para1 = document.getElementById('p1');
+let para2 = document.getElementById('p2');
+let form = document.getElementById('myForm');
 
 let emailVal = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 let email = document.getElementById('email');
@@ -21,6 +21,7 @@ let passVal = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[●!"#$%&'()*+,\-./:;<=>?@[\
 let parol = document.getElementById('pass');
 let resultPass = document.getElementById('passResult');
 
+let cooki = [nume, prenume, email];
 
 
 
