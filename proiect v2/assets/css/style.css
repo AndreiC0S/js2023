@@ -7,9 +7,9 @@ html {
     padding: 0;
 }
 
-body {
+.fix{
     height: 100vh;
-    display: flex;
+    display:flex; 
     flex-direction: column;
 }
 @media(max-width:576px){
@@ -156,12 +156,15 @@ li.selected a:hover, nav #tell .tellMenu .liMeniu {
 }
 
 main {
+    /* height: 1vh; */
     background-image: url(../images/background2.jpg);
     background-size: 31%;
     background-position: center;
     border: 1px black solid;
     overflow: auto;
     flex-grow: 1;
+    
+    
 }
 
 .background {
@@ -444,6 +447,41 @@ table tr th {
 
 
 /* CONTACT */
+
+/* show password */
+
+#togglePassword{
+    content: url("../images/pass/showpass.png");
+    appearance: none;
+    position: absolute;
+    width: 50px;
+    margin-left: -43px;
+    margin-top: -1px;
+    user-select: none;
+}
+
+#togglePassword:checked {
+    content: url("../images/pass/hide pass.png");
+}
+
+#sPass{
+    width: 30px;
+    height: auto;
+    margin-left: -33.5px;
+    margin-top: 4px;
+    position: absolute;
+}
+#sPass2{
+    width: 30px;
+    height: auto;
+    margin-left: -32px;
+    margin-top: 4px;
+    position: absolute;
+}
+
+.passRed{
+    visibility: hidden;
+}
 
 #myForm .pgreen{
     visibility: hidden;

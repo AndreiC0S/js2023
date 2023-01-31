@@ -10,7 +10,8 @@
   <link rel="stylesheet" href="./assets/css/styles.css" />
   <script src="./assets/js/data.js" defer></script>
   <script src="./assets/js/app.js" defer></script>
-  
+  <script src="./assets/js/filter.js" defer></script>
+
 </head>
 
 <body>
@@ -47,65 +48,29 @@
       <div class="filters-container">
         <!-- search -->
         <form class="input-form">
-          <input type="text" class="search-input" placeholder="search...">
+          <input type="text" class="search-input" id="searchbar" placeholder="search...">
         </form>
         <!-- categories -->
         <h4>Company</h4>
-        <article class="companies"> <button class="company-btn">all</button> <button class="company-btn">ikea</button>
-          <button class="company-btn">marcos</button> <button class="company-btn">caressa</button> <button
-            class="company-btn">liddy</button></article>
+        <article class="companies"> <button class="company-btn" id="all" onclick='sortCompany(data,"")'>all</button> <button class="company-btn" onclick="sortCompany(data,'ikea')">ikea</button>
+          <button class="company-btn" onclick="sortCompany(data,'marcos')">marcos</button> <button class="company-btn" onclick="sortCompany(data,'caressa')">caressa</button> <button
+            class="company-btn" onclick="sortCompany(data,'liddy')">liddy</button>
+        </article>
         <!-- price -->
         <h4>Price</h4>
         <form class="price-form">
-          <input type="range" class="price-filter" min="0" value="50" max="80">
+          <input type="range" class="price-filter" id="range" min="0" value="50" max="80" >
         </form>
-        <p class="price-value">Value : $80</p>
+        <p class="price-value" id=""> </p>
       </div>
     </div>
     <!-- products -->
     <div id="products-container" class="products-container">
 
-      <!-- <article class="product">
-          <div class="product-container">
-            <img src="https://res.cloudinary.com/diqqf3eq2/image/upload/v1668084633/product-1_evgdfv.jpg" class="product-img img" alt="high-back bench">
-           
-            <div class="product-icons">
-              <a href="product.html?id=rec43w3ipXvP28vog" class="product-icon">
-                <i class="fas fa-search"></i>
-              </a>
-              <button class="product-cart-btn product-icon" data-id="rec43w3ipXvP28vog">
-                <i class="fas fa-shopping-cart"></i>
-              </button>
-            </div>
-          </div>
-          <footer>
-            <p class="product-name">high-back bench</p>
-            <h4 class="product-price">$9.99</h4>
-          </footer>
-        </article>
-
-        <article class="product">
-          <div class="product-container">
-            <img src="https://res.cloudinary.com/diqqf3eq2/image/upload/v1668084633/product-1_evgdfv.jpg" class="product-img img" alt="high-back bench">
-           
-            <div class="product-icons">
-              <a href="product.html?id=rec43w3ipXvP28vog" class="product-icon">
-                <i class="fas fa-search"></i>
-              </a>
-              <button class="product-cart-btn product-icon" data-id="rec43w3ipXvP28vog">
-                <i class="fas fa-shopping-cart"></i>
-              </button>
-            </div>
-          </div>
-          <footer>
-            <p class="product-name">high-back bench</p>
-            <h4 class="product-price">$9.99</h4>
-          </footer>
-        </article> -->
 
     </div>
   </section>
-  
+
 </body>
 
 </html>

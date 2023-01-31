@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <form method="post">
+        Username
+        <input type="text" name="username" autofocus="" autocapitalize="none" autocomplete="username" required=""
+            id="id_username"><br><br>
+        Password
+        <input type="password" name="password" required="" id="id_password">
+        <img id="sPass" class="green" src="./assets/img/showPass.png" alt="f"><img id="sPass2" class="red" src="./assets/img/hidePass.png" alt="f"><input type="checkbox" name="pass" class="showPass" id="togglePassword"><br><br>
+        <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+
+    <script>
+
+
+        const togglePassword = document.querySelector('#togglePassword');
+        const password = document.getElementById('id_password')
+        const image1 = document.getElementById('sPass')
+        const image2 = document.getElementById('sPass2')
+
+        togglePassword.addEventListener('click', function (e) {
+            if(password.getAttribute('type') === 'password'){
+                password.setAttribute('type','text'); 
+                image1.setAttribute('class','red');
+                image2.setAttribute('class','green');
+            }else {
+                password.setAttribute('type','password')
+                image2.setAttribute('class','red');
+                image1.setAttribute('class','green'); 
+            } 
+        });
+
+    </script>
+</body>
+
+</html>

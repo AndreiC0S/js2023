@@ -11,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap" rel="stylesheet">
     <title>Proiect v1 </title>
     <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
     <script src="./assets/js/contact.js" defer></script>
 </head>
 
@@ -59,8 +60,11 @@ Contact</a> </xmp> <span class="logo_color"></span>
                         <p id="result" class="pgreen">E-mail...</p>
 
                         <label for="pass">Parola:</label>
-                        <input type="password" name="pass" id="pass" class="green" placeholder="Powered by RegEx" > <br>
-                        <p class="pgreen" id="passResult">at least 8 chars, at least one number, at least one special character</p>
+                        <input type="password" name="pass" id="pass" class="green" placeholder="Powered by RegEx">  
+                        <!-- <img id="sPass" class="passGreen" src="./assets/images/pass/showPass.png" alt="f">
+                        <img id="sPass2" class="passRed" src="./assets/images/pass/hide pass.png" alt="f"> -->
+                        <input type="checkbox" name="pass" class="showPass" id="togglePassword"><br><br>
+                        <p class="pgreen" id="passResult">8 chars, one uppercase, one number, one special character</p>
                     </div>
                     <label for="mesaj">mesaj:</label> <br>
                     <textarea name="mesaj" id="mesaj" cols="30" rows="10"></textarea> <br>

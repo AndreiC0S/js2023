@@ -1,0 +1,28 @@
+#togglePassword{
+    position:absolute;
+    margin-left: -28.5px;
+    margin-top: 0.5px;
+    width: 20px;
+    height: 20px;
+    opacity: 0;
+}
+
+#sPass{
+    width: 25px;
+    height: auto;
+    margin-left: -31.5px;
+    margin-top: -2.5px;
+    position: absolute;
+}
+#sPass2{
+    width: 25px;
+    height: auto;
+    margin-left: -31px;
+    margin-top: -2px;
+    position: absolute;
+}
+
+.passRed{
+    visibility: hidden;
+}
+
