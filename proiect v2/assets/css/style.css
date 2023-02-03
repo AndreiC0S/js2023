@@ -11,7 +11,6 @@ body{
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    
 }
 /* .fix{
     height: 100vh;
@@ -455,7 +454,7 @@ table tr th {
 /* show password */
 
 #togglePassword{
-    content: url("../images/pass/showpass.png");
+    content: url("../images/pass/showPass.png");
     appearance: none;
     position: absolute;
     width: 50px;
@@ -465,7 +464,7 @@ table tr th {
 }
 
 #togglePassword:checked {
-    content: url("../images/pass/hide pass.png");
+    content: url("../images/pass/hidePass.png");
 }
 
 #sPass{

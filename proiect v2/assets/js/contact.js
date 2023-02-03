@@ -1,10 +1,3 @@
-// De facut:
-// C00ki (formular)
-// Local Host [mesaj]
-// buton la parola {sper}
-
-
-
 
 let nume = document.getElementById('nume');
 let prenume = document.getElementById('prenume');
@@ -28,10 +21,6 @@ const image2 = document.getElementById('sPass2')
 
 
 
-
-
-
-
 function handleForn(e) {
     e.preventDefault();
     checNP(arr)
@@ -51,7 +40,6 @@ togglePassword.addEventListener('click', function (e) {
 
 function checNP(a) {
     a.forEach((element, index) => {
-
         if (element.value == "" && index == 0) {
             nume.setAttribute('class', 'red');
             para1.setAttribute('class', 'pred');
