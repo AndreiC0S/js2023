@@ -4,7 +4,7 @@ const IMGPATH = "https://image.tmdb.org/t/p/w1280";
 
 const main = document.getElementById("main");
 const form = document.getElementById("form");
-const search = document.getElementById("search");
+const Search = document.getElementById("search");
 
 showMovies(movies, searchTerm='');
 function showMovies(results, searchTerm=''){
@@ -36,10 +36,10 @@ form.addEventListener("submit", (e) => {
     e.preventDefault();
     main.innerHTML = '';
      
-    const searchTerm = search.value;
+    const searchTerm = Search.value;
 
     if (searchTerm) {
         showMovies(movies, searchTerm.toLowerCase());
-        search.value = "";
+        Search.value = "";
     }
 });

@@ -1,5 +1,5 @@
 html {
-    height: 100%;
+    height: 100vh;
 }
 
 * {
@@ -7,11 +7,17 @@ html {
     padding: 0;
 }
 
-.fix{
+body{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    
+}
+/* .fix{
     height: 100vh;
     display:flex; 
     flex-direction: column;
-}
+} */
 @media(max-width:576px){
     body{
         height: auto;
@@ -156,72 +162,72 @@ li.selected a:hover, nav #tell .tellMenu .liMeniu {
 }
 
 main {
-    /* height: 1vh; */
+    
+    display: flex;
     background-image: url(../images/background2.jpg);
     background-size: 31%;
     background-position: center;
+    background-repeat:repeat;
     border: 1px black solid;
-    overflow: auto;
+    /* overflow: auto; */
     flex-grow: 1;
-    
-    
 }
 
 .background {
+    
+    height: 100%;
+    background-color: rgba(241, 241, 241, 0.925);
+    min-height: 100%;
+    width: 40%;
+    margin: auto;
+    overflow: auto;
+    
+    
+}
+.background_acasa{
+    
     background-color: rgba(241, 241, 241, 0.925);
     height: 100%;
-    min-height: 611px;
-    margin: auto;
-    width: 50%;
+    width: 40%;
     overflow: auto;
 }
 
+
 main .float {
-    display: flex;
+    display: flex; 
     justify-content: center;
-    align-items: center;
+    align-items: center; 
+    
 }
 
 main .float .float_left {
     display: inline-block;
-    max-width: 250px;
+    width: 50%;
     height: auto;
-    margin-top: 30px;
-    margin-left: 50px;
-    margin-right: 50px;
-    min-width: auto;
+    margin: 20px;
     border: 3px red solid;
     padding: 0px 15px 0px 5px;
-    vertical-align: auto;
+    
 }
 
 main .float .float_right {
     display: inline-block;
-    max-width: 250px;
+    width: 50%;
     height: auto;
-    margin-top: 30px;
-    margin-left: 50px;
-    margin-right: 50px;
-    min-width: auto;
+    margin: 20px;
     border: 3px red solid;
     padding: 0px 15px 0px 5px;
     vertical-align: auto;
+    
 }
 
 .position {
     margin-left: 20%;
-    height: 100%;
 }
 
-.background_acasa {
-    
-    background-color: rgba(241, 241, 241, 0.925);
-    height: 100%;
-    width: 50%;
-    overflow: auto;
-}
 
 .sidebar_container {
+    display: flex;
     float: left;
     width: 100%;
     max-width: 200px;
@@ -372,13 +378,9 @@ main .float .float_right {
     font-size: 48px;
     text-shadow: 4px 4px 4px #aaa
 }
-
-
-
-
 .produs_3 img {
     height: 150px;
-    width: 200px;
+    width: auto;
     float: left;
     border: black 3px solid;
     border-radius: 10px;
@@ -388,17 +390,25 @@ main .float .float_right {
     font-size: large;
     font-style: italic;
     text-align: center;
-    width: 500px;
-    margin-top: 20px;
-    margin-left: 210px;
+    width: auto;
+    height: auto;
+    margin-top: 7px;
+    margin-left: 21px;
     border-top: #2604c0 3px solid;
     border-right: #2604c0 3px solid;
     border-bottom: #2604c0 3px solid;
-    padding: 15px;
+    padding-top: 15px;
+    padding-right: 15px;
+    padding-bottom: 15px;
+    padding-left: 0;
+    word-break: break-word
 }
 
 
 /* BLOG */
+.tabel{
+    height: 100%;
+}
 .tabel h1 {
     border-bottom: #2604c0 3px solid;
     text-align: center;
@@ -440,12 +450,6 @@ table tr th {
     color: wheat;
     background-color: black;
 }
-
-
-
-
-
-
 /* CONTACT */
 
 /* show password */
@@ -494,7 +498,31 @@ table tr th {
     
 }
 #myForm .red{
-    border: red 2px solid;
+    border:rgba(255, 0, 0, 1) 2px solid;
+    animation: alert 3s linear 3 ;
+    animation-direction: alternate
+    
+}
+@keyframes alert {
+    0%{
+        
+        border:  rgba(255, 0, 0, 1) 2px solid;
+        background-color: rgba(255, 0, 0, 0);
+        
+    }
+    50%{
+        
+        border:  rgba(255, 0, 0, 1) 2px solid;
+        background-color: rgba(255, 0, 0, 0.6);
+        
+    }
+    
+    100%{
+        
+        border:  rgba(255, 0, 0, 1) 2px solid;
+        background-color: white;
+        
+    }
     
 }
 
@@ -551,6 +579,7 @@ body .iframe {
 #footer {
     border: 1px black solid;
     text-align: center;
+    
 }
 
 #footer p {
