@@ -1,3 +1,10 @@
+// de incercat:
+
+//  daca price > range.value... .product setattribute('calss','hidden')
+//  poate asa o sa dispara elementete care au pretul mai mare decat range.value 
+//  fara sa fac alta functie separata care sa 'injecteze' un html nou.
+//  same shit cu butoanele vietii. Poate asa iese si saracia de searchbar mai fancy
+
 
 let productsDOM = document.getElementById('products-container')
 const range = document.getElementById('range');
@@ -19,11 +26,12 @@ const displayProducts = (list) => {
     const id = product.id;
     const company = product.fields.company;
     const title = product.fields.name;
-    const price = product.fields.price;
+    const priceProduct = product.fields.price;
     const img = product.fields.image[0].url;
+    const price = priceProduct / 100
 
     // sort by price
-    if (((price / 100)) <= range.value) {
+    if (price <= range.value) {
       return `<article class="product">
       <div class="product-container">
         <img src="${img}" class="product-img img" alt="${title}">
@@ -40,7 +48,7 @@ const displayProducts = (list) => {
       <footer>
         <p class="product-name">${title}</p>
         <h5>${company}</h5>
-        <h4 class="product-price">${price / 100} $</h4>
+        <h4 class="product-price">${price} $</h4>
       </footer>
     </article>
       `;
@@ -55,8 +63,6 @@ displayProducts(data);
 
 // -----------------------------------------------------------------------------
 
-
-
 // Filters
 
 // By Company
@@ -64,14 +70,16 @@ displayProducts(data);
 document.getElementById("all").onclick = function () {
   displayProducts(data);
 };
-
+  // const sortbyCompany = sortCompany(data)
+  // console.log(sortbyCompany)
 function sortCompany(item, companyName) {
   const FIkea = item.map((product) => {
     const id = product.id;
     const company = product.fields.company;
     const title = product.fields.name;
-    const price = product.fields.price;
+    const priceProduct = product.fields.price;
     const img = product.fields.image[0].url;
+    const price = priceProduct / 100;
 
     if (company === companyName) {
       return `<article class="product">
@@ -90,7 +98,7 @@ function sortCompany(item, companyName) {
       <footer>
         <p class="product-name">${title}</p>
         <h5>${company}</h5>
-        <h4 class="product-price">${price / 100} $</h4>
+        <h4 class="product-price">${price} $</h4>
       </footer>
     </article>
       `;
@@ -103,7 +111,7 @@ function sortCompany(item, companyName) {
 // -----------------------------------------------------------------------------
 
 // detalii price 
-pValue(50);
+pValue(80);
 function pValue(nr) {
   priceValue.textContent = `Value: ${nr}$`
 }
@@ -123,10 +131,12 @@ function search_bar_resut(producs, search){
     const id = product.id;
     const company = product.fields.company;
     const title = product.fields.name;
-    const price = product.fields.price;
+    const priceProduct = product.fields.price;
     const img = product.fields.image[0].url;
+    const price = priceProduct / 100
     
-    if(company  ===  search || title === search || id === search){
+    
+    if(title.includes(search) || company.includes(search) || id.includes(search)){
       return `<article class="product">
       <div class="product-container">
         <img src="${img}" class="product-img img" alt="${title}">
@@ -143,7 +153,7 @@ function search_bar_resut(producs, search){
       <footer>
         <p class="product-name">${title}</p>
         <h5>${company}</h5>
-        <h4 class="product-price">${price / 100} $</h4>
+        <h4 class="product-price">${price} $</h4>
       </footer>
     </article>
       `;
@@ -155,12 +165,15 @@ function search_bar_resut(producs, search){
 
 formular.addEventListener("input", (e) => {
   e.preventDefault();
-  productsDOM.innerHTML = '';
-
+  // productsDOM.innerHTML = '';
+  
   const searchTerm = search_bar.value;
-
-  if (searchTerm) {
+  
+  if (searchTerm !=="") {
       search_bar_resut(data, searchTerm.toLowerCase());
+  }else if(searchTerm === ""){
+    displayProducts(data)
+
   }
 });
 
