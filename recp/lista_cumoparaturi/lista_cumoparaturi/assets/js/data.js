@@ -411,7 +411,7 @@ const productsJsonList =[
           "#ff0000"
         ],
         "price": 1099,
-        "name": "albany sectional",
+        "name": "albany sectional sofa",
         "image": [
           {
             "id": "attjWNxk7KKzcLPDx",

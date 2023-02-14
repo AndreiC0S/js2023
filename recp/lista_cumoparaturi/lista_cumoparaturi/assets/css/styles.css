@@ -177,7 +177,9 @@ p {
 Navbar
 ===============
 */
-
+.hidden, .hiddenSearch, .hiddenCompany{
+  display: none;
+}
 .navbar {
   height: 6rem;
   background: transparent;
