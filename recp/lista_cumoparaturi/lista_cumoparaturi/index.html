@@ -10,8 +10,9 @@
   <link rel="stylesheet" href="./assets/css/styles.css" />
   <script src="./assets/js/data.js" defer></script>
   <script src="./assets/js/app.js" defer></script>
-  
-  
+
+
+
 
 </head>
 
@@ -37,10 +38,15 @@
       <img src="./assets/img/couch.jpeg" style="width:10%" class="nav-logo" alt="logo">
       <!-- cart icon -->
       <div class="toggle-container">
-        <button class="toggle-cart">
-          <i class="fas fa-shopping-cart"></i>
-        </button>
-        <span class="cart-item-count">2</span>
+        <div>
+          <button class="toggle-cart">
+            <i class="fas fa-shopping-cart"></i>
+          </button>
+          <span class="cart-item-count">0</span>
+          <div id="kart-box" class="kart-hidden">
+          </div>
+          
+        </div>
       </div>
     </div>
   </nav>
@@ -53,14 +59,16 @@
         </form>
         <!-- categories -->
         <h4>Company</h4>
-        <article class="companies"> <button class="company-btn" id="all">all</button> <button class="company-btn" onclick="sortCompany('ikea')">ikea</button>
-          <button class="company-btn" onclick="sortCompany('marcos')">marcos</button> <button class="company-btn" onclick="sortCompany('caressa')">caressa</button> <button
-            class="company-btn" onclick="sortCompany('liddy')">liddy</button>
+        <article class="companies"> <button class="company-btn" id="all">all</button> <button class="company-btn"
+            onclick="sortCompany('ikea')">ikea</button>
+          <button class="company-btn" onclick="sortCompany('marcos')">marcos</button> <button class="company-btn"
+            onclick="sortCompany('caressa')">caressa</button> <button class="company-btn"
+            onclick="sortCompany('liddy')">liddy</button>
         </article>
         <!-- price -->
         <h4>Price</h4>
         <form class="price-form">
-          <input type="range" class="price-filter" id="range" min="0" value="80" max="80" >
+          <input type="range" class="price-filter" id="range" min="0" value="80" max="80">
         </form>
         <p class="price-value" id=""> </p>
       </div>

@@ -1,19 +1,16 @@
 
-
-
-let productsDOM = document.getElementById('products-container')
+const productsDOM = document.getElementById('products-container')
 const range = document.getElementById('range');
 const priceValue = document.querySelector('.price-value')
 let companyQuery = "product";
 const AllProductz = document.getElementsByClassName('product');
 
 //Gaseste produsele
-const fetchProducts = function () {
+const fetchProducts = () => {
 
   productsDOM.innerHTML = '<div class="laoding"></div>'
   try {
-    const data = productsJsonList;
-    return data;
+    return productsJsonList;
   }
   catch (error) {
     productsDOM.innerHTML = '<p class="error"> there was an error</p>';
@@ -32,14 +29,8 @@ const toggleClasses = (product) => {
 // afiseaza produse
 const displayProducts = (list) => {
 
-  // const addToChart = (id,company,title,priceProduct,img,price)=>{
-  //   console.log(id,company,title,priceProduct,img,price)
-
-  // }
 
   const productList = list.map((product) => {
-    
-    
     const id = product.id;
     const company = product.fields.company;
     const title = product.fields.name;
@@ -75,28 +66,24 @@ const displayProducts = (list) => {
 const data = fetchProducts();
 displayProducts(data);
 
-
 // -----------------------------------------------------------------------------
 
 // Filters
 
 // By Company
 
-document.getElementById("all").onclick = function () {
+document.getElementById("all").onclick = () => {
   displayProducts(data);
 };
 
 function sortCompany(companyName) {
   companyQuery = companyName;
 
-  const CompanySort = document.getElementsByClassName('product');
-
-  for (let productz of CompanySort) {
-    const NameCompany = productz.children[1].children[1].textContent;
+  for (let productz of AllProductz) {
+    const NameCompany = productz.querySelector("h5").textContent;
     if (NameCompany === companyQuery) {
       productz.classList.remove("hiddenCompany");
       productz.classList.add("show");
-
     } else {
       productz.classList.remove("show");
       productz.classList.add("hiddenCompany");
@@ -113,35 +100,6 @@ function Test() {
     toggleClasses(prod);
   }
 }
-
-// function Test() {
-
-//   const getProductz = document.getElementsByClassName('show');
-//   const getProductzAll = document.getElementsByClassName('product');
-
-//   for (let prod of getProductzAll) {
-//     if (prod.classList.contains('product')) {
-//       for (let product of getProductzAll) {
-//         const productzPrice = product.children[1].children[2].textContent.split(" ")[0];
-//         if (Number(productzPrice) >= Number(range.value)) {
-//           product.classList.add("hidden");
-//         } else {
-//           product.classList.remove("hidden");
-//         }
-//       }
-//     } else if (prod.classList.contains('show')) {
-//       for (let product of getProductz) {
-//         const productzPrice = product.children[1].children[2].textContent.split(" ")[0];
-//         if (Number(productzPrice) >= Number(range.value)) {
-//           product.classList.add("hidden");
-
-//         } else {
-//           product.classList.remove("hidden");
-//         }
-//       }
-//     }
-//   }
-// }
 
 
 // -----------------------------------------------------------------------------
@@ -171,15 +129,13 @@ function search_bar_resut(search) {
 
   const searchProd = document.getElementsByClassName('price');
 
-
   for (let products of searchProd) {
-    const productTitle = products.children[1].children[0].textContent;
-    console.log(typeof productTitle)
+    const productTitle = products.querySelector(".product-name").textContent;
     if (productTitle.includes(search)) {
       products.classList.remove("hiddenSearch");
       products.classList.add("show");
-
-    } else {
+    } 
+    else {
       products.classList.add("hiddenSearch");
       products.classList.remove("show");
     }
@@ -191,52 +147,22 @@ formular.addEventListener("submit", (e) => {
   e.preventDefault();
 
   const searchTerm = search_bar.value.trim();
+
   if (searchTerm !== "") {
     search_bar_resut(searchTerm.toLowerCase());
     return;
   };
   displayProducts(data);
+  /*
 
+  daca apas pe marcos, de exemplu, caut un produs si apoi sterg
+  ce e in search bar si dau enter, imi arata toate produsele, in loc
+  sa imi arate produsele pe care eram inainte, adica alea de la marcos.
+  nuj daca asa trebuie sa fie, dar am observat asta si am zis sa iti zic
 
+  */
 });
 
-
-let getAllBtn = document.querySelectorAll('button[data-id]')
-console.log(getAllBtn.length)
-
-
-const productNumber = document.querySelector(".cart-item-count")
-console.log(productNumber)
-
-const addToChart = (getAllBtn) => {
-  const isInChart = [];
-  for (let i = 0; i < getAllBtn.length; i++) {
-    getAllBtn[i].addEventListener("click", function () {
-     isInChart.push(this.dataset.id)
-     productNumber.textContent = isInChart.length
-     
-    })
-  }
-  
- return isInChart
-}
-const numbersOfProducts = addToChart(getAllBtn)
-
-const cartListBox = document.getElementById('kart-box')
-
-const toggleChartList = () =>{
-  if(cartListBox.classList.contains('kart-hidden')){
-    cartListBox.classList.remove("kart-hidden")
-    cartListBox.classList.add('kart-box')
-  }else{
-    cartListBox.classList.add("kart-hidden")
-  }
-}
-const cartListButton = document.querySelector(".toggle-cart")
-
-cartListButton.addEventListener("click", function(){
-  toggleChartList()
-})
-
 // -----------------------------------------------------------------------------
+
 

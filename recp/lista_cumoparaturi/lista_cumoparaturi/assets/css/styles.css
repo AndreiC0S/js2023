@@ -777,3 +777,18 @@ Single Product Page
     grid-template-columns: 1fr 1fr;
   }
 }
+.kart-box{
+  position: absolute;
+  right: 0;
+  z-index: 1;
+  width: 400px;
+  height:300px;
+  border: 1px rgba(0, 0, 0, 0.712) solid;
+  border-radius: 9px;
+  background-color: rgba(238, 238, 238, 0.842)
+  
+}
+
+.kart-hidden{
+  display: none;
+}
