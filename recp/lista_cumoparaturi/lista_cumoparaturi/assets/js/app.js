@@ -1,6 +1,4 @@
 
-
-
 let productsDOM = document.getElementById('products-container')
 const range = document.getElementById('range');
 const priceValue = document.querySelector('.price-value')
@@ -32,14 +30,11 @@ const toggleClasses = (product) => {
 // afiseaza produse
 const displayProducts = (list) => {
 
-  // const addToChart = (id,company,title,priceProduct,img,price)=>{
-  //   console.log(id,company,title,priceProduct,img,price)
-
-  // }
+  
 
   const productList = list.map((product) => {
-    
-    
+
+
     const id = product.id;
     const company = product.fields.company;
     const title = product.fields.name;
@@ -114,35 +109,6 @@ function Test() {
   }
 }
 
-// function Test() {
-
-//   const getProductz = document.getElementsByClassName('show');
-//   const getProductzAll = document.getElementsByClassName('product');
-
-//   for (let prod of getProductzAll) {
-//     if (prod.classList.contains('product')) {
-//       for (let product of getProductzAll) {
-//         const productzPrice = product.children[1].children[2].textContent.split(" ")[0];
-//         if (Number(productzPrice) >= Number(range.value)) {
-//           product.classList.add("hidden");
-//         } else {
-//           product.classList.remove("hidden");
-//         }
-//       }
-//     } else if (prod.classList.contains('show')) {
-//       for (let product of getProductz) {
-//         const productzPrice = product.children[1].children[2].textContent.split(" ")[0];
-//         if (Number(productzPrice) >= Number(range.value)) {
-//           product.classList.add("hidden");
-
-//         } else {
-//           product.classList.remove("hidden");
-//         }
-//       }
-//     }
-//   }
-// }
-
 
 // -----------------------------------------------------------------------------
 
@@ -162,7 +128,9 @@ range.addEventListener("change", function (e) {
 
 // -----------------------------------------------------------------------------
 
-// Search Bar 
+
+
+//---------------------------Search Bar----------------------------------------- 
 
 const search_bar = document.getElementById('searchbar');
 const formular = document.querySelector(".input-form");
@@ -200,43 +168,152 @@ formular.addEventListener("submit", (e) => {
 
 });
 
-
-let getAllBtn = document.querySelectorAll('button[data-id]')
-console.log(getAllBtn.length)
+//------------------------------------------------------------------------------
 
 
-const productNumber = document.querySelector(".cart-item-count")
-console.log(productNumber)
 
-const addToChart = (getAllBtn) => {
-  const isInChart = [];
-  for (let i = 0; i < getAllBtn.length; i++) {
-    getAllBtn[i].addEventListener("click", function () {
-     isInChart.push(this.dataset.id)
-     productNumber.textContent = isInChart.length
-     
-    })
-  }
-  
- return isInChart
-}
-const numbersOfProducts = addToChart(getAllBtn)
+//----------------------------CART BOX VISIBILITY-------------------------------
+
 
 const cartListBox = document.getElementById('kart-box')
 
-const toggleChartList = () =>{
-  if(cartListBox.classList.contains('kart-hidden')){
+const toggleChartList = () => {
+  if (cartListBox.classList.contains('kart-hidden')) {
     cartListBox.classList.remove("kart-hidden")
     cartListBox.classList.add('kart-box')
-  }else{
+  } else {
     cartListBox.classList.add("kart-hidden")
   }
 }
 const cartListButton = document.querySelector(".toggle-cart")
 
-cartListButton.addEventListener("click", function(){
+cartListButton.addEventListener("click", function () {
   toggleChartList()
+
 })
 
+
+//------------------------------------------------------------------------------
+
+
+
+//-------------------------------ADD TO CART BUTTON-----------------------------
+
+
+const kartProducts = document.querySelector('#kart-box-content');
+let getAllBtn = document.querySelectorAll('[data-id]')
+const productNumber = document.querySelector(".cart-item-count")
+const isInCart = [];
+
+
+getAllBtn.forEach(element => {
+  
+  element.addEventListener('click', function(){
+    
+    isInCart.push(this.dataset.id)
+    productNumber.textContent = isInCart.length
+    addItemsToCart(isInCart, data)
+    totalPrice()
+
+  })
+});
+
 // -----------------------------------------------------------------------------
+
+
+
+//----------------------------Add item to cart ---------------------------------
+
+let y ;
+let PriceArray = []
+const addItemsToCart = (isInChart, data) => {
+
+  const productList = data.map((product) => {
+    const id = product.id;
+    const company = product.fields.company;
+    const title = product.fields.name;
+    const priceProduct = product.fields.price;
+    const img = product.fields.image[0].url;
+    const price = priceProduct / 100;
+    let c = 0
+    
+    isInCart.forEach(e =>{
+      if(e.includes(id)){
+        c = c + 1
+    }
+  })
+    
+    // for (i = 0; i < isInChart.length; i++) {
+    //   if (isInChart[i].includes(id)) {
+    //     c = c + 1
+    //   }
+    // }
+    
+    if (isInChart.includes(id)) {
+      
+      return `<div class="addItemToCart">
+             <img src="${img}"
+               class="single-product-img img" alt="">
+             <div>
+               <h3>${title}</h3>
+               <div class="detalii">
+                 <p>${company}</p>
+                 <p data-price="${price}">Qty: ${c}</p>
+               </div>
+             </div>
+           <div>
+               <p class='pPrice' data-price="${price}">Price: ${price}</p>
+             </div>
+           </div>`
+    }
+  })
+  .join("")
+  kartProducts.innerHTML = productList;
+  
+}
+//------------------------------------------------------------------------------
+
+
+
+// -----------------------------PRET TOTAL--------------------------------------
+
+
+
+function totalPrice(){
+
+  const DOMNode = document.querySelector("#total");
+  let total = 0;
+  const cartArr = [];
+  kartProducts.querySelectorAll(".pPrice").forEach((product) => {
+    const { price, qty } = product.dataset;
+    cartArr.push({
+      price,
+      qty,
+    })
+  });
+
+  for (let i = 0; i < cartArr.length; i++) {
+    total += Number(cartArr[i].price) * Number(cartArr[i].quantity);
+  }
+   
+
+  DOMNode.textContent = Math.floor((total * 100) / 100);
+  console.log(cartArr[0])
+}
+
+  
+  
+ 
+
+  
+
+
+
+
+
+//pPrice= element.getElementById('pPrice').textContent.slice(7,-2);  Returneaza doar pretul(fara "Pret:", fara "$")
+
+//------------------------------------------------------------------------------
+
+
 
