@@ -246,6 +246,7 @@ getAllBtn.forEach(element => {
 
 
     let productObj = data.find((product) => product.id == this.dataset.id)
+    let iduri = this.dataset
 
     let quantity = 1
     const id = productObj.id;
@@ -254,6 +255,12 @@ getAllBtn.forEach(element => {
     const price = productObj.fields.price / 100;
     const img = productObj.fields.image[0].url;
 
+   
+    const i = productArray.findIndex(e => e.id === iduri)
+    if(i > -1){
+      quantity = quantity + 1
+    }
+    
     productArray.push({
       quantity,
       id,
@@ -271,7 +278,7 @@ getAllBtn.forEach(element => {
 
     // addItemsToCart(isInCart, data)
 
-    console.log(productArray)
+    console.log(i)
 
     totalPrice()
 
