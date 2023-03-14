@@ -6,8 +6,14 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Products</title>
+  
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" />
   <link rel="stylesheet" href="./assets/css/styles.css" />
+
+  <script
+  src="https://code.jquery.com/jquery-3.6.4.min.js"
+  integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
+  crossorigin="anonymous" defer></script>
   <script src="./assets/js/data.js" defer></script>
   <script src="./assets/js/app.js" defer></script>
 
@@ -46,20 +52,26 @@
 
           <div id="kart-box" class="kart-hidden">
             <div id="kart-box-content"class='kart-box-content'>
-              <!-- <div class="addItemToCart">
-                <img src="https://res.cloudinary.com/diqqf3eq2/image/upload/v1668084633/product-1_evgdfv.jpg"
+              <div class="addItemToCart">
+                <!-- <img src="https://res.cloudinary.com/diqqf3eq2/image/upload/v1668084633/product-1_evgdfv.jpg"
                   class="single-product-img img" alt="">
                 <div>
                   <h3>High-Back Bench</h3>
                   <div class="detalii">
                     <p>Ikea</p>
-                    <p>Qty:3</p>
+                    
+                    <div id="btnContainer">
+                      <p>Qty:3</p> 
+                      <button class="btnSubProduct">-</button>
+                      <button class="btnAddProduct ">+</button>
+                    </div>
+                    
                   </div>
                 </div>
                 <div>
                   <p>15$</p>
-                </div>
-              </div> -->
+                </div> -->
+              </div>
             </div>
             <div id="total-box">
               <p class="x">Total:</p>

@@ -30,7 +30,7 @@ const toggleClasses = (product) => {
 // afiseaza produse
 const displayProducts = (list) => {
 
-  
+
 
   const productList = list.map((product) => {
 
@@ -195,7 +195,40 @@ cartListButton.addEventListener("click", function () {
 
 //------------------------------------------------------------------------------
 
+// function changeQuantity(index, quantity) {
+//   [isInCartindex].quantity += quantity;
 
+// }
+
+// {
+//   name: "numele produsului",
+//   company: "numele companiei",
+//   price: 999,
+//   quantity: 1,
+//   image: "https://res.cloudinary.com/diqqf3eq2/image/upload/v1668084633/product-1_evgdfv.jpg",
+// }
+
+// isInCart[index].quantity += 1;
+
+// isInCart.map((produs, index) => `<div class="addItemToCart">
+//   <img src="${img}"
+//     class="single-product-img img" alt="">
+//   <div>
+//     <h3>${title}</h3>
+//     <div class="detalii">
+//       <p>${company}</p>
+
+//       <div id="btnContainer">
+//           <p class = 'qtyItems'>Qty: ${c}</p>
+//           <button class="btnSubProduct" onclick="test(${index}, -1)">-</button>
+//           <button class="btnAddProduct" onclick="test(${index}, 1)">+</button>
+//       </div>
+//     </div>
+//   </div>
+//   <div>
+//     <p class='pPrice' data-price="${price}" data-index="">Price: ${(price*c).toFixed(2)}$</p>
+//   </div>
+// </div>`)
 
 //-------------------------------ADD TO CART BUTTON-----------------------------
 
@@ -204,74 +237,146 @@ const kartProducts = document.querySelector('#kart-box-content');
 let getAllBtn = document.querySelectorAll('[data-id]')
 const productNumber = document.querySelector(".cart-item-count")
 const isInCart = [];
+let productArray = []
 
 
 getAllBtn.forEach(element => {
-  
-  element.addEventListener('click', function(){
+
+  element.addEventListener('click', function () {
+
+
+    let productObj = data.find((product) => product.id == this.dataset.id)
+
+    let quantity = 1
+    const id = productObj.id;
+    const company = productObj.fields.company;
+    const title = productObj.fields.name;
+    const price = productObj.fields.price / 100;
+    const img = productObj.fields.image[0].url;
+
+    productArray.push({
+      quantity,
+      id,
+      company,
+      title,
+      price,
+      img,
+    })
     
+  
     isInCart.push(this.dataset.id)
+
     productNumber.textContent = isInCart.length
-    addItemsToCart(isInCart, data)
+    addItemsToCart(productArray,isInCart)
+
+    // addItemsToCart(isInCart, data)
+
+    console.log(productArray)
+
     totalPrice()
 
+
   })
+
 });
 
 // -----------------------------------------------------------------------------
+
+// -------------------------- TEST ---------------------------------------------
+
+
+function addItemsToCart(productArray,isInCart) {
+
+  const productList = productArray.map((product, index) =>{
+
+    return`<div class="addItemToCart">
+    <img src="${product.img}"
+     class="single-product-img img" alt="">
+   <div>
+     <h3>${product.title}</h3>
+     <div class="detalii">
+       <p>${product.company}</p>
+       
+       <div id="btnContainer">
+            <p class = 'qtyItems'>Qty: ${product.quantity} </p>
+            <button class="btnSubProduct" onclick="AddSubItem(${index}, -1)">-</button>
+            <button class="btnAddProduct" onclick="AddSubItem(${index}, 1)">+</button>
+        </div>
+     </div>
+   </div>
+ <div>
+     <p class='pPrice' data-price="${product.price}" data-quantity="${product.quantity}">Price: ${(product.price * product.quantity).toFixed(2)}$</p>
+   </div>
+ </div>`
+    
+  })
+  kartProducts.innerHTML = productList.join('');
+}
+
+function AddSubItem(index, quantity) {
+  console.log(index, quantity)
+  productArray[index].quantity += quantity;
+  kartProducts.innerHTML = addItemsToCart(productArray)
+    .join("");
+}
 
 
 
 //----------------------------Add item to cart ---------------------------------
 
-let y ;
-let PriceArray = []
-const addItemsToCart = (isInChart, data) => {
 
-  const productList = data.map((product) => {
-    const id = product.id;
-    const company = product.fields.company;
-    const title = product.fields.name;
-    const priceProduct = product.fields.price;
-    const img = product.fields.image[0].url;
-    const price = priceProduct / 100;
-    let c = 0
-    
-    isInCart.forEach(e =>{
-      if(e.includes(id)){
-        c = c + 1
-    }
-  })
-    
-    // for (i = 0; i < isInChart.length; i++) {
-    //   if (isInChart[i].includes(id)) {
-    //     c = c + 1
-    //   }
-    // }
-    
-    if (isInChart.includes(id)) {
-      
-      return `<div class="addItemToCart">
-             <img src="${img}"
-               class="single-product-img img" alt="">
-             <div>
-               <h3>${title}</h3>
-               <div class="detalii">
-                 <p>${company}</p>
-                 <p data-price="${price}">Qty: ${c}</p>
-               </div>
-             </div>
-           <div>
-               <p class='pPrice' data-price="${price}">Price: ${price}</p>
-             </div>
-           </div>`
-    }
-  })
-  .join("")
-  kartProducts.innerHTML = productList;
-  
-}
+// let PriceArray = []
+
+
+// const addItemsToCart = (isInChart, data) => {
+
+//   const productList = data.map((product) => {
+//     const id = product.id;
+//     const company = product.fields.company;
+//     const title = product.fields.name;
+//     const priceProduct = product.fields.price;
+//     const img = product.fields.image[0].url;
+//     const price = priceProduct / 100;
+
+
+
+//     if (isInChart.includes(id)) {
+
+//       return `<div class="addItemToCart">
+//              <img src="${img}"
+//                class="single-product-img img" alt="">
+//              <div>
+//                <h3>${title}</h3>
+//                <div class="detalii">
+//                  <p>${company}</p>
+
+//                  <div id="btnContainer">
+//                       <p class = 'qtyItems'>Qty: </p>
+//                       <button class="btnSubProduct" onclick="test(, -1)">-</button>
+//                       <button class="btnAddProduct" onclick="test(, +1)">+</button>
+//                   </div>
+//                </div>
+//              </div>
+//            <div>
+//                <p class='pPrice' data-price="${price}" data-quantity="">Price: ${(price).toFixed(2)}$</p>
+//              </div>
+//            </div>`
+//     }
+
+//   })
+//     .join("")
+//   kartProducts.innerHTML = productList;
+
+
+// }
 //------------------------------------------------------------------------------
+
+// function test(index, quantity) {
+//   console.log(index, quantity)
+//   isInCart[index].quantity += quantity;
+//   // kartProducts.innerHTML = showCartProducts().join("");
+// }
+
 
 
 
@@ -279,39 +384,26 @@ const addItemsToCart = (isInChart, data) => {
 
 
 
-function totalPrice(){
+function totalPrice() {
 
   const DOMNode = document.querySelector("#total");
   let total = 0;
   const cartArr = [];
   kartProducts.querySelectorAll(".pPrice").forEach((product) => {
-    const { price, qty } = product.dataset;
+    const { price, quantity } = product.dataset;
     cartArr.push({
       price,
-      qty,
+      quantity,
     })
   });
 
   for (let i = 0; i < cartArr.length; i++) {
     total += Number(cartArr[i].price) * Number(cartArr[i].quantity);
   }
-   
-
-  DOMNode.textContent = Math.floor((total * 100) / 100);
-  console.log(cartArr[0])
+  
+  DOMNode.textContent = `${Math.floor(total * 100) / 100} $`;
 }
 
-  
-  
- 
-
-  
-
-
-
-
-
-//pPrice= element.getElementById('pPrice').textContent.slice(7,-2);  Returneaza doar pretul(fara "Pret:", fara "$")
 
 //------------------------------------------------------------------------------
 
