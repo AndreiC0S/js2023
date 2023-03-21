@@ -32,7 +32,7 @@ const displayProducts = (list) => {
 
 
 
-  const productList = list.map((product) => {
+  const productList = list.map((product, index) => {
 
 
     const id = product.id;
@@ -50,7 +50,7 @@ const displayProducts = (list) => {
         <a href="product.html?id=${id}" class="product-icon" >
           <i class="fas fa-search"></i>
         </a>
-        <button class="product-cart-btn product-icon" data-id="${id}">
+        <button class="product-cart-btn product-icon" data-id="${id}" >
           <i class="fas fa-shopping-cart"></i>
         </button>
       </div>
@@ -195,40 +195,6 @@ cartListButton.addEventListener("click", function () {
 
 //------------------------------------------------------------------------------
 
-// function changeQuantity(index, quantity) {
-//   [isInCartindex].quantity += quantity;
-
-// }
-
-// {
-//   name: "numele produsului",
-//   company: "numele companiei",
-//   price: 999,
-//   quantity: 1,
-//   image: "https://res.cloudinary.com/diqqf3eq2/image/upload/v1668084633/product-1_evgdfv.jpg",
-// }
-
-// isInCart[index].quantity += 1;
-
-// isInCart.map((produs, index) => `<div class="addItemToCart">
-//   <img src="${img}"
-//     class="single-product-img img" alt="">
-//   <div>
-//     <h3>${title}</h3>
-//     <div class="detalii">
-//       <p>${company}</p>
-
-//       <div id="btnContainer">
-//           <p class = 'qtyItems'>Qty: ${c}</p>
-//           <button class="btnSubProduct" onclick="test(${index}, -1)">-</button>
-//           <button class="btnAddProduct" onclick="test(${index}, 1)">+</button>
-//       </div>
-//     </div>
-//   </div>
-//   <div>
-//     <p class='pPrice' data-price="${price}" data-index="">Price: ${(price*c).toFixed(2)}$</p>
-//   </div>
-// </div>`)
 
 //-------------------------------ADD TO CART BUTTON-----------------------------
 
@@ -236,154 +202,175 @@ cartListButton.addEventListener("click", function () {
 const kartProducts = document.querySelector('#kart-box-content');
 let getAllBtn = document.querySelectorAll('[data-id]')
 const productNumber = document.querySelector(".cart-item-count")
-const isInCart = [];
-let productArray = []
+const idProduct = [];
+let isInCart = 0;
+let productArray = [];
+let indexItems = 0
+
+function isInCartADD(){
+  isInCart++
+  productNumber.textContent = isInCart
+}
+function isInCartSub(){
+  isInCart--
+  if(isInCart < 1){
+    isInCart = 1;
+  }
+  productNumber.textContent = isInCart
+  
+}
 
 
 getAllBtn.forEach(element => {
-
   element.addEventListener('click', function () {
 
-
     let productObj = data.find((product) => product.id == this.dataset.id)
-    let iduri = this.dataset
-
-    let quantity = 1
+    let iduri = this.dataset.id
     const id = productObj.id;
     const company = productObj.fields.company;
     const title = productObj.fields.name;
     const price = productObj.fields.price / 100;
     const img = productObj.fields.image[0].url;
+    const quantity = 1;
+
+    // const i = productArray.findIndex(e => e.id == iduri)
+    if (!idProduct.includes(id)) {
+      productArray.push({
+        id,
+        quantity,
+        company,
+        title,
+        price,
+        img,
+      })
+      this.dataset.index = indexItems
+      indexItems++
+    }
+    // if (i < 0) {
+    //   productArray.push({
+    //     id,
+    //     quantity,
+    //     company,
+    //     title,
+    //     price,
+    //     img,
+    //   })
+    //   this.dataset.index = indexItems
+    //   indexItems++
+    // } 
+    else {
+      let thisDataSetIndex = this.dataset.index
+      productArray[thisDataSetIndex].quantity++
+    }
+
+    idProduct.push(this.dataset.id)
+    
+    productNumber.textContent = isInCart
 
    
-    const i = productArray.findIndex(e => e.id === iduri)
-    if(i > -1){
-      quantity = quantity + 1
-    }
+
+    isInCartADD();
+    addItemsToCart(productArray);
+    totalPrice();
     
-    productArray.push({
-      quantity,
-      id,
-      company,
-      title,
-      price,
-      img,
-    })
-    
-  
-    isInCart.push(this.dataset.id)
-
-    productNumber.textContent = isInCart.length
-    addItemsToCart(productArray,isInCart)
-
-    // addItemsToCart(isInCart, data)
-
-    console.log(i)
-
-    totalPrice()
-
-
   })
-
 });
 
 // -----------------------------------------------------------------------------
 
-// -------------------------- TEST ---------------------------------------------
-
-
-function addItemsToCart(productArray,isInCart) {
-
-  const productList = productArray.map((product, index) =>{
-
-    return`<div class="addItemToCart">
-    <img src="${product.img}"
-     class="single-product-img img" alt="">
-   <div>
-     <h3>${product.title}</h3>
-     <div class="detalii">
-       <p>${product.company}</p>
-       
-       <div id="btnContainer">
-            <p class = 'qtyItems'>Qty: ${product.quantity} </p>
-            <button class="btnSubProduct" onclick="AddSubItem(${index}, -1)">-</button>
-            <button class="btnAddProduct" onclick="AddSubItem(${index}, 1)">+</button>
-        </div>
-     </div>
-   </div>
- <div>
-     <p class='pPrice' data-price="${product.price}" data-quantity="${product.quantity}">Price: ${(product.price * product.quantity).toFixed(2)}$</p>
-   </div>
- </div>`
-    
-  })
-  kartProducts.innerHTML = productList.join('');
-}
-
-function AddSubItem(index, quantity) {
-  console.log(index, quantity)
-  productArray[index].quantity += quantity;
-  kartProducts.innerHTML = addItemsToCart(productArray)
-    .join("");
-}
-
-
-
 //----------------------------Add item to cart ---------------------------------
 
 
-// let PriceArray = []
+function addItemsToCart(productArray) {
 
-
-// const addItemsToCart = (isInChart, data) => {
-
-//   const productList = data.map((product) => {
-//     const id = product.id;
-//     const company = product.fields.company;
-//     const title = product.fields.name;
-//     const priceProduct = product.fields.price;
-//     const img = product.fields.image[0].url;
-//     const price = priceProduct / 100;
-
-
-
-//     if (isInChart.includes(id)) {
-
-//       return `<div class="addItemToCart">
-//              <img src="${img}"
-//                class="single-product-img img" alt="">
-//              <div>
-//                <h3>${title}</h3>
-//                <div class="detalii">
-//                  <p>${company}</p>
-
-//                  <div id="btnContainer">
-//                       <p class = 'qtyItems'>Qty: </p>
-//                       <button class="btnSubProduct" onclick="test(, -1)">-</button>
-//                       <button class="btnAddProduct" onclick="test(, +1)">+</button>
-//                   </div>
-//                </div>
-//              </div>
-//            <div>
-//                <p class='pPrice' data-price="${price}" data-quantity="">Price: ${(price).toFixed(2)}$</p>
-//              </div>
-//            </div>`
-//     }
-
-//   })
-//     .join("")
-//   kartProducts.innerHTML = productList;
-
-
-// }
+  const productList = productArray.map((product, index) => {
+    let a = product;
+    
+    return `<div class="addItemToCart" >
+    <img src="${product.img}"
+     class="single-product-img img" alt="">
+    <div>
+      <h3 class="titleProduct">${product.title}</h3>
+    
+      <div class="detalii" >
+       <p>${product.company}</p>
+        <div id="btnContainer">
+          <p class = 'qtyItems' data-quantity="${product.quantity}">Qty: ${product.quantity} </p>
+          <button class="btnSubProduct" onclick="AddSubItem(${index}, -1,)">-</button>
+          <button class="btnAddProduct" onclick="AddSubItem(${index}, 1, )">+</button>
+        </div>
+      </div>
+    </div>
+    <div class="pPriceBox">
+      <p > Price:  </p>
+      <p class='pPrice' data-price="${product.price}" data-quantity="${product.quantity}">${(product.price * product.quantity).toFixed(2)}$</p>
+    </div>
+    <button class="deleteProduct" onclick="deleteProd(productArray, ${index},idProduct)"><img class="delProdX" src="./assets/img/redX.png" alt="x"></button>
+  </div>`
+  })
+  kartProducts.innerHTML = productList.join('');
+}
 //------------------------------------------------------------------------------
 
-// function test(index, quantity) {
-//   console.log(index, quantity)
-//   isInCart[index].quantity += quantity;
-//   // kartProducts.innerHTML = showCartProducts().join("");
-// }
 
+
+function deleteId(array,id){
+  for(i=0; i < array.length; i++){
+    if(array[i] == id){
+      console.log('i= '+i)
+      delete array[i]
+    }
+  }
+}
+
+
+
+//--------------------------Add/Substract Items from cart ----------------------
+
+function deleteProd(productArray,index,idProduct){
+  try{
+    isInCart = isInCart - productArray[index].quantity;
+    let id = productArray[index].id;
+    delete productArray[index];
+
+    deleteId(idProduct,id)
+    kartProducts.innerHTML = addItemsToCart(productArray).join('');
+
+  } catch{}
+
+  totalPrice()
+  productNumber.textContent = isInCart
+
+}
+
+const addItemToCart = document.querySelectorAll('addItemToCart');
+function AddSubItem(index, quantity) {
+  try {
+    console.log(index, quantity)
+    productArray[index].quantity += quantity;
+    
+    if( productArray[index].quantity < 1){
+      productArray[index].quantity = 1
+      return
+    }
+    
+    kartProducts.innerHTML = addItemsToCart(productArray)
+      .join("");
+    
+
+  } catch {
+    console.log('ma pis pe ea de eroare')
+  }
+  if(quantity > -1){
+    isInCartADD();
+  } else{
+    isInCartSub()
+  }
+  
+  totalPrice()
+}
+
+//------------------------------------------------------------------------------
 
 
 
@@ -393,7 +380,7 @@ function AddSubItem(index, quantity) {
 
 function totalPrice() {
 
-  const DOMNode = document.querySelector("#total");
+  const totalPrice = document.querySelector("#total");
   let total = 0;
   const cartArr = [];
   kartProducts.querySelectorAll(".pPrice").forEach((product) => {
@@ -406,13 +393,13 @@ function totalPrice() {
 
   for (let i = 0; i < cartArr.length; i++) {
     total += Number(cartArr[i].price) * Number(cartArr[i].quantity);
+    // console.log(total)
   }
-  
-  DOMNode.textContent = `${Math.floor(total * 100) / 100} $`;
+
+  totalPrice.textContent = `${total.toFixed(2)}  $`;
 }
 
-
-//------------------------------------------------------------------------------
+//---------------------------------------------------------------------------
 
 
 

@@ -6,7 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Products</title>
-  
+
+  <!-- bootstrap -->
+ 
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" />
   <link rel="stylesheet" href="./assets/css/styles.css" />
 
@@ -49,32 +52,34 @@
             <i class="fas fa-shopping-cart"></i>
           </button>
           <span class="cart-item-count">0</span>
-
           <div id="kart-box" class="kart-hidden">
-            <div id="kart-box-content"class='kart-box-content'>
-              <div class="addItemToCart">
-                <!-- <img src="https://res.cloudinary.com/diqqf3eq2/image/upload/v1668084633/product-1_evgdfv.jpg"
-                  class="single-product-img img" alt="">
-                <div>
-                  <h3>High-Back Bench</h3>
-                  <div class="detalii">
-                    <p>Ikea</p>
-                    
-                    <div id="btnContainer">
-                      <p>Qty:3</p> 
-                      <button class="btnSubProduct">-</button>
-                      <button class="btnAddProduct ">+</button>
-                    </div>
-                    
-                  </div>
-                </div>
-                <div>
-                  <p>15$</p>
-                </div> -->
-              </div>
+            <div id="kart-box-content"class='kart-box-content'> 
+              
+              <!-- <div class="addItemToCart" >
+    <img src="${product.img}"
+     class="single-product-img img" alt="">
+    <div>
+      <h3 class="titleProduct">${product.title}</h3>
+    
+      <div class="detalii" >
+       <p>${product.company}</p>
+        <div id="btnContainer">
+          <p class = 'qtyItems' >Qty: ${product.quantity} </p>
+          <button class="btnSubProduct" onclick="AddSubItem(${index}, -1,)">-</button>
+          <button class="btnAddProduct" onclick="AddSubItem(${index}, 1, )">+</button>
+        </div>
+      </div>
+    </div>
+    <div class="pPriceBox">
+      <p > Price:  </p>
+      <p class='pPrice' data-price="${product.price}" data-quantity="${product.quantity}">${(product.price * product.quantity).toFixed(2)}$</p>
+    </div>
+    <button class="deleteProduct"><img class="delProdX" src="./assets/img/redX.png" alt="x"></button>
+  </div> -->
+              
             </div>
             <div id="total-box">
-              <p class="x">Total:</p>
+              <p class="totalP">Total:</p>
               <p id="total" class="totalPrice">0</p>
             </div>
           </div>
